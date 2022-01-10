@@ -1,0 +1,7 @@
+﻿{
+  "Urls": "http://127.0.0.1:5003",
+  "AuthenticationOptions": {
+    "IssuerSigningKey": "Development:c287f64d-1c38-4af1-b72a-794cf097d9df",
+    "AccessTokenLifetime": "02:30:00"
+  }
+}

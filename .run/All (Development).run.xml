@@ -1,0 +1,11 @@
+﻿<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="All (Development)" type="CompoundRunConfigurationType">
+    <toRun name="Authorization Internal (Development)" type="DotNetProject" />
+    <toRun name="Authorization Web API (Development+Migration)" type="DotNetProject" />
+    <toRun name="FilesManagement Internal (Development)" type="DotNetProject" />
+    <toRun name="FilesManagement Web API (Development+Migration)" type="DotNetProject" />
+    <toRun name="Query Consistency" type="DotNetProject" />
+    <toRun name="Quiery Web API" type="DotNetProject" />
+    <method v="2" />
+  </configuration>
+</component>

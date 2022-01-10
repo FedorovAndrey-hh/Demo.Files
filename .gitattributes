@@ -1,0 +1,20 @@
+* text eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.jks binary
+
+*.ttf binary
+
+*.jar binary
+
+*.crt binary
+*.pem binary
+*.der binary
+
+*.obj binary
+*.sfb binary
+
+*.cmd eol=crlf
+*.bat eol=crlf

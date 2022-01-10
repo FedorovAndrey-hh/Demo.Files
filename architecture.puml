@@ -1,0 +1,35 @@
+@startuml
+
+[Authorization.WebApi]
+[Authorization.Internal]
+
+[Authorization.WebApi] <.. HTTP
+[Authorization.WebApi] -> Messaging
+[Authorization.Internal] <-- Messaging
+
+database Authorization.Data
+
+[Authorization.WebApi] <--> Authorization.Data
+[Authorization.Internal] --> Authorization.Data
+
+[FilesManagement.WebApi]
+[FilesManagement.Internal]
+[Query.Consistency]
+
+[FilesManagement.WebApi] <.. HTTP
+
+database FilesManagement.Data
+database Query.Data
+
+[FilesManagement.WebApi] <--> FilesManagement.Data
+
+[FilesManagement.WebApi] --> Messaging
+
+[FilesManagement.Internal] <--> Messaging
+
+[Query.Consistency] <-- Messaging
+[Query.Consistency] --> Query.Data
+[Query.WebAPi] <-- Query.Data
+[Query.WebAPi] ..> HTTP
+
+@enduml

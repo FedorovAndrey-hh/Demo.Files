@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Common.Communication.RabbitMq.DependencyInjection\Common.Communication.RabbitMq.DependencyInjection.csproj" />
+      <ProjectReference Include="..\Common.Communication\Common.Communication.csproj" />
+      <ProjectReference Include="..\Common.Web\Common.Web.csproj" />
+      <ProjectReference Include="..\Demo.Files.Authorization.Presentation.Common\Demo.Files.Authorization.Presentation.Common.csproj" />
+      <ProjectReference Include="..\Demo.Files.Authorization.Applications.Abstractions\Demo.Files.Authorization.Applications.Abstractions.csproj" />
+      <ProjectReference Include="..\Demo.Files.Authorization.Applications.Implementations.ByDomain\Demo.Files.Authorization.Applications.Implementations.ByDomain.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Configuration\Demo.Files.Common.Configuration.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Contracts\Demo.Files.Common.Contracts.csproj" />
+      <ProjectReference Include="..\Demo.Files.Authorization.Domain.Adapters.Context.AspIdentity.Postgres\Demo.Files.Authorization.Domain.Adapters.Context.AspIdentity.Postgres.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Web\Demo.Files.Common.Web.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="Users\UsersControllerResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>UsersControllerResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+      <EmbeddedResource Update="WebApiResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>WebApiResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Users\UsersControllerResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>UsersControllerResources.resx</DependentUpon>
+      </Compile>
+      <Compile Update="WebApiResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>ModelBinderResources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+</Project>

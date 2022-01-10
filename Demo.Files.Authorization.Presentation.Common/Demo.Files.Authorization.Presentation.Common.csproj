@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Common.Communication.RabbitMq.DependencyInjection\Common.Communication.RabbitMq.DependencyInjection.csproj" />
+      <ProjectReference Include="..\Demo.Files.Authorization.Applications.Implementations.ByDomain.AspIdentity\Demo.Files.Authorization.Applications.Implementations.ByDomain.AspIdentity.csproj" />
+      <ProjectReference Include="..\Demo.Files.Authorization.Domain.Adapters.Context.AspIdentity.Postgres\Demo.Files.Authorization.Domain.Adapters.Context.AspIdentity.Postgres.csproj" />
+      <ProjectReference Include="..\Demo.Files.Authorization.Applications.Implementations.ByDomain\Demo.Files.Authorization.Applications.Implementations.ByDomain.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Configuration\Demo.Files.Common.Configuration.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Contracts\Demo.Files.Common.Contracts.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="common-settings.Development.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Include="common-settings.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
+</Project>

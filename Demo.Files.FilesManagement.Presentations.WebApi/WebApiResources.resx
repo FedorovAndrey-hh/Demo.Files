@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+            
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="Error_InternalServerErrorTitle" xml:space="preserve">
+        <value>One or more internal server errors occurred.</value>
+    </data>
+    <data name="StorageError_InvalidHistory" xml:space="preserve">
+        <value>Storage data is corrupted.</value>
+    </data>
+    <data name="StorageError_NotExists" xml:space="preserve">
+        <value>There is no such storage.</value>
+    </data>
+    <data name="StorageError_Outdated" xml:space="preserve">
+        <value>The storage has already been changed.</value>
+    </data>
+    <data name="StorageError_ExceededLimitations" xml:space="preserve">
+        <value>The limits were exceeded.</value>
+    </data>
+    <data name="StorageError_LimitationsTotalSpaceTooLarge" xml:space="preserve">
+        <value>The limit on available space is too weak.</value>
+    </data>
+    <data name="StorageError_LimitationsTotalFileCountTooLarge" xml:space="preserve">
+        <value>The limit on the number of files is too weak.</value>
+    </data>
+    <data name="StorageError_LimitationsTotalSingleFileSizeTooLarge" xml:space="preserve">
+        <value>The limit on the size of a single file is too weak.</value>
+    </data>
+    <data name="StorageError_DirectoryEmptyName" xml:space="preserve">
+        <value>A directory cannot have an empty name.</value>
+    </data>
+    <data name="StorageError_DirectoryNameWithUnsupportedCharacters" xml:space="preserve">
+        <value>The directory name contains invalid characters.</value>
+    </data>
+    <data name="StorageError_DirectoryNameTooLarge" xml:space="preserve">
+        <value>The directory name is too long.</value>
+    </data>
+    <data name="StorageError_DirectoryNameConflict" xml:space="preserve">
+        <value>A directory with that name already exists.</value>
+    </data>
+    <data name="StorageError_DirectoryNotExists" xml:space="preserve">
+        <value>The directory does not exist.</value>
+    </data>
+    <data name="StorageError_FileEmptyName" xml:space="preserve">
+        <value>A file cannot have an empty name.</value>
+    </data>
+    <data name="StorageError_FileNameWithUnsupportedCharacters" xml:space="preserve">
+        <value>The file name contains invalid characters.</value>
+    </data>
+    <data name="StorageError_FileNameTooLarge" xml:space="preserve">
+        <value>The file name is too long.</value>
+    </data>
+    <data name="StorageError_FileNameConflict" xml:space="preserve">
+        <value>A file with that name already exists.</value>
+    </data>
+    <data name="StorageError_FileNotExists" xml:space="preserve">
+        <value>The file does not exist.</value>
+    </data>
+    <data name="StorageError_FileIllegalMove" xml:space="preserve">
+        <value>It is not possible to move the file to the specified directory.</value>
+    </data>
+</root>

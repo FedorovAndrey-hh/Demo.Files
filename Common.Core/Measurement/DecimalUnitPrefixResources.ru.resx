@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="Compact24" xml:space="preserve">
+        <value>И</value>
+    </data>
+    <data name="Compact21" xml:space="preserve">
+        <value>З</value>
+    </data>
+    <data name="Compact18" xml:space="preserve">
+        <value>Э</value>
+    </data>
+    <data name="Compact15" xml:space="preserve">
+        <value>П</value>
+    </data>
+    <data name="Compact12" xml:space="preserve">
+        <value>Т</value>
+    </data>
+    <data name="Compact09" xml:space="preserve">
+        <value>Г</value>
+    </data>
+    <data name="Compact06" xml:space="preserve">
+        <value>М</value>
+    </data>
+    <data name="Compact03" xml:space="preserve">
+        <value>к</value>
+    </data>
+    <data name="Compact02" xml:space="preserve">
+        <value>г</value>
+    </data>
+    <data name="Compact01" xml:space="preserve">
+        <value>да</value>
+    </data>
+    <data name="CompactM01" xml:space="preserve">
+        <value>д</value>
+    </data>
+    <data name="CompactM02" xml:space="preserve">
+        <value>с</value>
+    </data>
+    <data name="CompactM03" xml:space="preserve">
+        <value>м</value>
+    </data>
+    <data name="CompactM06" xml:space="preserve">
+        <value>мк</value>
+    </data>
+    <data name="CompactM09" xml:space="preserve">
+        <value>н</value>
+    </data>
+    <data name="CompactM12" xml:space="preserve">
+        <value>п</value>
+    </data>
+    <data name="CompactM15" xml:space="preserve">
+        <value>ф</value>
+    </data>
+    <data name="CompactM18" xml:space="preserve">
+        <value>а</value>
+    </data>
+    <data name="CompactM21" xml:space="preserve">
+        <value>з</value>
+    </data>
+    <data name="CompactM24" xml:space="preserve">
+        <value>и</value>
+    </data>
+    <data name="Full24" xml:space="preserve">
+        <value>Иотта</value>
+    </data>
+    <data name="Full21" xml:space="preserve">
+        <value>Зетта</value>
+    </data>
+    <data name="Full18" xml:space="preserve">
+        <value>Экса</value>
+    </data>
+    <data name="Full15" xml:space="preserve">
+        <value>Пета</value>
+    </data>
+    <data name="Full12" xml:space="preserve">
+        <value>Тера</value>
+    </data>
+    <data name="Full09" xml:space="preserve">
+        <value>Гига</value>
+    </data>
+    <data name="Full06" xml:space="preserve">
+        <value>Мега</value>
+    </data>
+    <data name="Full03" xml:space="preserve">
+        <value>Кило</value>
+    </data>
+    <data name="Full02" xml:space="preserve">
+        <value>Гекто</value>
+    </data>
+    <data name="Full01" xml:space="preserve">
+        <value>Дека</value>
+    </data>
+    <data name="FullM01" xml:space="preserve">
+        <value>Деци</value>
+    </data>
+    <data name="FullM02" xml:space="preserve">
+        <value>Санти</value>
+    </data>
+    <data name="FullM03" xml:space="preserve">
+        <value>Милли</value>
+    </data>
+    <data name="FullM06" xml:space="preserve">
+        <value>Микро</value>
+    </data>
+    <data name="FullM09" xml:space="preserve">
+        <value>Нано</value>
+    </data>
+    <data name="FullM12" xml:space="preserve">
+        <value>Пико</value>
+    </data>
+    <data name="FullM15" xml:space="preserve">
+        <value>Фемто</value>
+    </data>
+    <data name="FullM18" xml:space="preserve">
+        <value>Атто</value>
+    </data>
+    <data name="FullM21" xml:space="preserve">
+        <value>Зепто</value>
+    </data>
+    <data name="FullM24" xml:space="preserve">
+        <value>Иокто</value>
+    </data>
+    <data name="Compact00" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Full00" xml:space="preserve">
+        <value />
+    </data>
+</root>

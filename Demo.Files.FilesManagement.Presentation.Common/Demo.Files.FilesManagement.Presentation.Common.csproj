@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Content Include="common-settings.Development.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Include="common-settings.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Common.Communication.RabbitMq.DependencyInjection\Common.Communication.RabbitMq.DependencyInjection.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Configuration\Demo.Files.Common.Configuration.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Contracts\Demo.Files.Common.Contracts.csproj" />
+      <ProjectReference Include="..\Demo.Files.FilesManagement.Applications.Implementations.ByDomain.EntityFramework\Demo.Files.FilesManagement.Applications.Implementations.ByDomain.EntityFramework.csproj" />
+      <ProjectReference Include="..\Demo.Files.FilesManagement.Applications.Implementations.ByDomain\Demo.Files.FilesManagement.Applications.Implementations.ByDomain.csproj" />
+      <ProjectReference Include="..\Demo.Files.FilesManagement.Domain.Adapters.Context.EntityFramework.Postgres\Demo.Files.FilesManagement.Domain.Adapters.Context.EntityFramework.Postgres.csproj" />
+    </ItemGroup>
+
+
+</Project>

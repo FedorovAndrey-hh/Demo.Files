@@ -1,0 +1,59 @@
+### Register user
+POST http://{{host}}:{{authorizationPort}}/apis/v1/auth/users:register
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "{{userEmail}}",
+  "displayName": "{{userUsername}}",
+  "password": "{{userPassword}}"
+}
+
+> {% client.global.set("userAccessToken", response.body.accessToken); %}
+
+### Request storage
+POST http://{{host}}:{{authorizationPort}}/apis/v1/auth/users/me/resources/storage/request
+Authorization: Bearer {{userAccessToken}}
+Accept: application/json
+
+### Authorize user with created storage
+POST http://{{host}}:{{authorizationPort}}/apis/v1/auth/users:sign-in
+Accept: application/json
+Content-Type: application/json
+
+{
+  "emailOrUsername": "{{userEmail}}",
+  "password": "{{userPassword}}"
+}
+
+> {% client.global.set("userAccessToken", response.body.accessToken); %}
+
+### View created storage
+GET http://{{host}}:{{queryPort}}/apis/v1/files-management/storages/my/views/compact
+Authorization: Bearer {{userAccessToken}}
+Accept: application/json
+
+### Add directory 1
+POST http://{{host}}:{{filesManagementPort}}/apis/v1/files-management/storages/my/directories
+Authorization: Bearer {{userAccessToken}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "TestDirectory1"
+}
+
+### Add directory 2
+POST http://{{host}}:{{filesManagementPort}}/apis/v1/files-management/storages/my/directories
+Authorization: Bearer {{userAccessToken}}
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "TestDirectory2"
+}
+
+### View created directories
+http://{{host}}:{{queryPort}}/apis/v1/files-management/storages/my/directories/all/views/compact
+Authorization: Bearer {{userAccessToken}}
+Accept: application/json

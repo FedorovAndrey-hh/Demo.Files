@@ -1,0 +1,144 @@
+version: "3.9"
+services:
+  # Query
+  query-web-api:
+    container_name: Demo.Files.Query.WebApi
+    build:
+      context: .
+      dockerfile: Demo.Files.Query.WebApiService/Dockerfile
+    environment:
+      Environment: Development
+      Urls: http://0.0.0.0:5007
+      PersistenceOptions__Host: document-database
+      PersistenceOptions__Database: admin
+      PersistenceOptions__Username: DevMongoDbUser
+      PersistenceOptions__Password: DevMongoDbPassword
+      CommunicationOptions__Host: messaging
+      CommunicationOptions__Username: DevMessagingUser
+      CommunicationOptions__Password: DevMessagingPassword
+    ports:
+      - "5007:5007"
+    links:
+      - messaging
+      - document-database
+  query-internal:
+    container_name: Demo.Files.Query.Consistency
+    build:
+      context: .
+      dockerfile: Demo.Files.Query.ConsistencyService/Dockerfile
+    environment:
+      Environment: Development
+      PersistenceOptions__Host: document-database
+      PersistenceOptions__Database: admin
+      PersistenceOptions__Username: DevMongoDbUser
+      PersistenceOptions__Password: DevMongoDbPassword
+      CommunicationOptions__Host: messaging
+      CommunicationOptions__Username: DevMessagingUser
+      CommunicationOptions__Password: DevMessagingPassword
+    links:
+      - messaging
+      - document-database
+  
+  # FilesManagement
+  files-management-web-api:
+    container_name: Demo.Files.FilesManagement.WebApi
+    build:
+      context: .
+      dockerfile: Demo.Files.FilesManagement.Presentations.WebApi/Dockerfile
+    environment:
+      Environment: Development
+      Urls: http://0.0.0.0:5002
+      PersistenceOptions__Server: relational-database
+      PersistenceOptions__Database: Files.Demo.FilesManagement
+      PersistenceOptions__Port: 5432
+      PersistenceOptions__Username: DevPostgresUser
+      PersistenceOptions__Password: DevPostgresPassword
+      ProgramDebugOptions__MigratePersistenceOnStart: true
+      CommunicationOptions__Host: messaging
+      CommunicationOptions__Username: DevMessagingUser
+      CommunicationOptions__Password: DevMessagingPassword
+    ports:
+      - "5002:5002"
+    links:
+      - messaging
+      - relational-database
+  files-management-internal:
+    container_name: Demo.Files.FilesManagement.Internal
+    build:
+      context: .
+      dockerfile: Demo.Files.FilesManagement.Presentations.Internal/Dockerfile
+    environment:
+      Environment: Development
+      PersistenceOptions__Server: relational-database
+      PersistenceOptions__Database: Files.Demo.FilesManagement
+      PersistenceOptions__Port: 5432
+      PersistenceOptions__Username: DevPostgresUser
+      PersistenceOptions__Password: DevPostgresPassword
+      CommunicationOptions__Host: messaging
+      CommunicationOptions__Username: DevMessagingUser
+      CommunicationOptions__Password: DevMessagingPassword
+    links:
+      - messaging
+      - relational-database
+  
+  # Authorization
+  authorization-web-api:
+    container_name: Demo.Files.Authorization.WebApi
+    build:
+      context: .
+      dockerfile: Demo.Files.Authorization.Presentations.WebApi/Dockerfile
+    environment:
+      Environment: Development
+      Urls: http://0.0.0.0:5003
+      PersistenceOptions__Server: relational-database
+      PersistenceOptions__Database: Files.Demo.Authorization
+      PersistenceOptions__Port: 5432
+      PersistenceOptions__Username: DevPostgresUser
+      PersistenceOptions__Password: DevPostgresPassword
+      ProgramDebugOptions__MigratePersistenceOnStart: true
+      CommunicationOptions__Host: messaging
+      CommunicationOptions__Username: DevMessagingUser
+      CommunicationOptions__Password: DevMessagingPassword
+    ports:
+      - "5003:5003"
+    links:
+      - messaging
+      - relational-database
+  authorization-internal:
+    container_name: Demo.Files.Authorization.Internal
+    build:
+      context: .
+      dockerfile: Demo.Files.Authorization.Presentations.Internal/Dockerfile
+    environment:
+      Environment: Development
+      PersistenceOptions__Server: relational-database
+      PersistenceOptions__Database: Files.Demo.Authorization
+      PersistenceOptions__Port: 5432
+      PersistenceOptions__Username: DevPostgresUser
+      PersistenceOptions__Password: DevPostgresPassword
+      CommunicationOptions__Host: messaging
+      CommunicationOptions__Username: DevMessagingUser
+      CommunicationOptions__Password: DevMessagingPassword
+    links:
+      - messaging
+      - relational-database
+
+  # Infrastructure
+  messaging:
+    container_name: Demo.Files.Messaging
+    image: "rabbitmq:3.9-management"
+    environment:
+      RABBITMQ_DEFAULT_USER: DevMessagingUser
+      RABBITMQ_DEFAULT_PASS: DevMessagingPassword
+  document-database:
+    container_name: Demo.Files.DocumentDatabase
+    image: "mongo:4.2-rc"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: DevMongoDbUser
+      MONGO_INITDB_ROOT_PASSWORD: DevMongoDbPassword
+  relational-database:
+    container_name: Demo.Files.RelationalDatabase
+    image: "postgres:14.1"
+    environment:
+      POSTGRES_USER: DevPostgresUser
+      POSTGRES_PASSWORD: DevPostgresPassword

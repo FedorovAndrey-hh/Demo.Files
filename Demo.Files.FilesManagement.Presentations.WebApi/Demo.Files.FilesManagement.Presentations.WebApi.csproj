@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Common.Core\Common.Core.csproj" />
+      <ProjectReference Include="..\Common.Web\Common.Web.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Configuration\Demo.Files.Common.Configuration.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Contracts\Demo.Files.Common.Contracts.csproj" />
+      <ProjectReference Include="..\Demo.Files.Common.Web\Demo.Files.Common.Web.csproj" />
+      <ProjectReference Include="..\Demo.Files.FilesManagement.Presentation.Common\Demo.Files.FilesManagement.Presentation.Common.csproj" />
+      <ProjectReference Include="..\Demo.Files.FilesManagement.Applications.Implementations.ByDomain\Demo.Files.FilesManagement.Applications.Implementations.ByDomain.csproj" />
+      <ProjectReference Include="..\Demo.Files.FilesManagement.Domain.Adapters.Context.EntityFramework.Postgres\Demo.Files.FilesManagement.Domain.Adapters.Context.EntityFramework.Postgres.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Update="WebApiResources.resx">
+        <Generator>ResXFileCodeGenerator</Generator>
+        <LastGenOutput>WebApiResources.Designer.cs</LastGenOutput>
+      </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="WebApiResources.Designer.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>WebApiResources.resx</DependentUpon>
+      </Compile>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="Compact24" xml:space="preserve">
+        <value>Y</value>
+    </data>
+    <data name="Compact21" xml:space="preserve">
+        <value>Z</value>
+    </data>
+    <data name="Compact18" xml:space="preserve">
+        <value>E</value>
+    </data>
+    <data name="Compact15" xml:space="preserve">
+        <value>P</value>
+    </data>
+    <data name="Compact12" xml:space="preserve">
+        <value>T</value>
+    </data>
+    <data name="Compact09" xml:space="preserve">
+        <value>G</value>
+    </data>
+    <data name="Compact06" xml:space="preserve">
+        <value>M</value>
+    </data>
+    <data name="Compact03" xml:space="preserve">
+        <value>k</value>
+    </data>
+    <data name="Compact02" xml:space="preserve">
+        <value>h</value>
+    </data>
+    <data name="Compact01" xml:space="preserve">
+        <value>da</value>
+    </data>
+    <data name="CompactM01" xml:space="preserve">
+        <value>d</value>
+    </data>
+    <data name="CompactM02" xml:space="preserve">
+        <value>c</value>
+    </data>
+    <data name="CompactM03" xml:space="preserve">
+        <value>m</value>
+    </data>
+    <data name="CompactM06" xml:space="preserve">
+        <value>µ</value>
+    </data>
+    <data name="CompactM09" xml:space="preserve">
+        <value>n</value>
+    </data>
+    <data name="CompactM12" xml:space="preserve">
+        <value>p</value>
+    </data>
+    <data name="CompactM15" xml:space="preserve">
+        <value>f</value>
+    </data>
+    <data name="CompactM18" xml:space="preserve">
+        <value>a</value>
+    </data>
+    <data name="CompactM21" xml:space="preserve">
+        <value>z</value>
+    </data>
+    <data name="CompactM24" xml:space="preserve">
+        <value>y</value>
+    </data>
+    <data name="Full24" xml:space="preserve">
+        <value>Yotta</value>
+    </data>
+    <data name="Full21" xml:space="preserve">
+        <value>Zetta</value>
+    </data>
+    <data name="Full18" xml:space="preserve">
+        <value>Exa</value>
+    </data>
+    <data name="Full15" xml:space="preserve">
+        <value>Peta</value>
+    </data>
+    <data name="Full12" xml:space="preserve">
+        <value>Tera</value>
+    </data>
+    <data name="Full09" xml:space="preserve">
+        <value>Giga</value>
+    </data>
+    <data name="Full06" xml:space="preserve">
+        <value>Mega</value>
+    </data>
+    <data name="Full03" xml:space="preserve">
+        <value>Kilo</value>
+    </data>
+    <data name="Full02" xml:space="preserve">
+        <value>Hecto</value>
+    </data>
+    <data name="Full01" xml:space="preserve">
+        <value>Deca</value>
+    </data>
+    <data name="FullM01" xml:space="preserve">
+        <value>Deci</value>
+    </data>
+    <data name="FullM02" xml:space="preserve">
+        <value>Centi</value>
+    </data>
+    <data name="FullM03" xml:space="preserve">
+        <value>Milli</value>
+    </data>
+    <data name="FullM06" xml:space="preserve">
+        <value>Micro</value>
+    </data>
+    <data name="FullM09" xml:space="preserve">
+        <value>Nano</value>
+    </data>
+    <data name="FullM12" xml:space="preserve">
+        <value>Pico</value>
+    </data>
+    <data name="FullM15" xml:space="preserve">
+        <value>Femto</value>
+    </data>
+    <data name="FullM18" xml:space="preserve">
+        <value>Atto</value>
+    </data>
+    <data name="FullM21" xml:space="preserve">
+        <value>Zepto</value>
+    </data>
+    <data name="FullM24" xml:space="preserve">
+        <value>Yocto</value>
+    </data>
+    <data name="Compact00" xml:space="preserve">
+        <value />
+    </data>
+    <data name="Full00" xml:space="preserve">
+        <value />
+    </data>
+</root>

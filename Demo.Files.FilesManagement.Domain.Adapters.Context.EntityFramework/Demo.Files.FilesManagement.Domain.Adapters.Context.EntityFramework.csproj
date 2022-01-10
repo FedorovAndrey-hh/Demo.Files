@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Common.EntityFramework\Common.EntityFramework.csproj" />
+        <ProjectReference Include="..\Common.Persistence.EntityFramework\Common.Persistence.EntityFramework.csproj" />
+        <ProjectReference Include="..\Demo.Files.FilesManagement.Domain.Abstractions\Demo.Files.FilesManagement.Domain.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    </ItemGroup>
+
+</Project>

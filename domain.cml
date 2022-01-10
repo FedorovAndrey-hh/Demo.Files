@@ -1,0 +1,377 @@
+Domain FilesStorage {
+    Subdomain FilesManagement {
+        type = CORE_DOMAIN
+    }
+
+    Subdomain Presentation {
+        type = SUPPORTING_DOMAIN   
+    }
+
+    Subdomain PhysicalFileStorage {
+        type = GENERIC_SUBDOMAIN
+    }
+
+    Subdomain Access {
+        type = GENERIC_SUBDOMAIN
+    }
+}
+
+ContextMap FilesStorage {
+    contains QueryContext
+    contains FilesManagementContext
+    contains PhysicalFilesContext
+    contains AuthorizationContext
+
+    FilesManagementContext[C] <- [S]AuthorizationContext
+    FilesManagementContext[C] <- [S]PhysicalFilesContext
+    QueryContext[CF] <- [OHS, PL]FilesManagementContext
+    QueryContext[CF] <- [OHS, PL]AuthorizationContext
+    QueryContext[CF] <- [OHS, PL]PhysicalFilesContext
+}
+
+BoundedContext QueryContext implements Presentation {
+
+}
+
+BoundedContext FilesManagementContext implements FilesManagement {
+    Aggregate Storage {
+        Entity Storage {
+            aggregateRoot
+
+            - StorageId id
+            - StorageVersion version
+            - Metrics metrics
+
+            - Limitations limitations
+            Boolean isLimitationsExceeded
+
+            def @Directory directory(@DirectoryId id);
+            def @Directory directory(@DirectoryName name);
+
+            def Storage_LimitationsChanged changeLimitations(@Limitations limitations);
+
+            def @Storage_DirectoryAdded addDirectory(@DirectoryName name);
+            def @Storage_DirectoryRenamed renameDirectory(@DirectoryId id, @DirectoryName name);
+            def @Storage_DirectoryRelocated relocateDirectory(@DirectoryId id);
+            def @Storage_DirectoryRemoved removeDirectory(@DirectoryId id);
+
+            def @Storage_FileAdded addFile(@Directory directory, @PhysicalFileId physicalFileId, @FileName name, long ^size);
+            def @Storage_FileRenamed renameFile(@FileId id, @FileName name);
+            def @Storage_FileMoved moveFile(@DirectoryId directoryId, @FileId id, @DirectoryId destinationDirectoryId);
+            def @Storage_FileRelocated relocateFile(@DirectoryId directoryId, @FileId id);
+            def @Storage_FileRemoved removeFile(@FileId id);
+
+            def @Storage after(@StorageEvent ^event);
+
+            Repository StoragesRepository {       
+                @Storage get(@StorageId id);
+                void ^remove(@StorageId id, @StorageVersion version);
+            }
+        }
+
+        Service Storage {
+            @Storage fromHistory(List<@StorageEvent> events);
+            @Storage after(@Storage_Created ^event);
+        }
+
+        abstract DomainEvent StorageEvent
+
+        DomainEvent Storage_Created {
+            - StorageId id
+            - StorageVersion version
+
+            - @Limitations limitations
+        }
+
+        DomainEvent Storage_LimitationsChanged {
+            - StorageId id
+            - StorageVersion version
+
+            - @Limitations limitations
+        }
+
+        DomainEvent Storage_DirectoryAdded {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryName directoryName 
+        }
+        DomainEvent Storage_DirectoryRenamed {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryId directoryId 
+            - DirectoryName newDirectoryName 
+        }
+        DomainEvent Storage_DirectoryRelocated {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryId directoryId 
+            - DirectoryId newDirectoryId 
+        }
+        DomainEvent Storage_DirectoryRemoved {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryId directoryId 
+        }
+
+        DomainEvent Storage_FileAdded {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryId directoryId
+
+            - FileId fileId
+            - PhysicalFileId physicalFileId
+            - FileName fileName 
+            long fileSize
+        }
+        DomainEvent Storage_FileRenamed {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryId directoryId 
+            - FileId fileId
+            - FileName newFileName 
+        }
+        DomainEvent Storage_FileMoved {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryId sourceDirectoryId
+            - DirectoryId destinationDirectoryId
+            - FileId fileId
+        }
+        DomainEvent Storage_FileRelocated {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryId directoryId
+            - DirectoryId fileId
+            - DirectoryId newFileId
+        }
+        DomainEvent Storage_FileRemoved {
+            - StorageId id
+            - StorageVersion version
+
+            - DirectoryId directoryId 
+            - FileId fileId
+        }
+
+        abstract ValueObject StorageId
+        ValueObject StorageVersion {
+            long value key
+
+            def @StorageVersion next();
+        }
+
+        ValueObject Limitations {
+            long totalSpace
+            long totalFileCount
+            long singleFileSize
+        }
+
+        ValueObject Metrics {
+            long ^size
+            long filesCount
+        }
+
+        Entity Directory {
+            - DirectoryId id
+            - DirectoryName name
+            - Metrics metrics
+
+            def @File file(@FileId id);
+            def @File file(@FileName name);
+        }
+
+        abstract ValueObject DirectoryId
+
+        ValueObject DirectoryName {
+            String value
+        }
+
+        Entity File {
+            - FileId id
+            - PhysicalFileId physicalId
+            - FileName name
+            long ^size
+        }
+
+        abstract ValueObject FileId
+        abstract ValueObject PhysicalFileId
+
+        ValueObject FileName {
+            String value
+        }
+    }
+}
+
+BoundedContext PhysicalFilesContext implements PhysicalFileStorage {
+    Aggregate Container {
+        Entity Container {
+            aggregateRoot
+
+            - ContainerId id
+
+            def @File getFile(@FileId id);
+
+            def @CreatedFile ^createFile();
+
+            def void ^deleteFile(@FileId id);
+
+            def Stream ^readFile(@FileId id);
+
+            def Stream ^writeFile(@FileId id);
+
+            Repository ContainersRepository {       
+                @Storage get(@ContainerId id);
+                void ^remove(@ContainerId ^id);
+            }
+        }
+
+        abstract ValueObject ContainerId
+
+        ValueObject CreatedFile {
+            - FileId id
+            Stream stream
+        }
+
+        Entity File {
+            - FileId id
+            long ^size
+        }
+
+        ValueObject FileId {
+            long value key
+        }
+    }
+}
+
+BoundedContext AuthorizationContext implements Access {
+    Aggregate User {
+        Entity User {
+            aggregateRoot
+
+            - UserId id
+            - UserVersion version
+
+            - UserEmail ^email
+            - Username username
+            Boolean isActive
+
+            - List<@ResourceRequest> resourceRequests
+            - Set<@^Resource> resources
+            def Boolean ownResource(@^Resource resource);
+            def Boolean canAccessResource(@^Resource resource);
+            def @User_ResourceRequested requestResource(@ResourceType ^type);
+            def @User_ResourceAcquired acquireResource(@^Resource resource);
+            def @User_ResourceDeleted deleteResource(@^Resource resource);
+
+            def @User_UsernameChanged changeUsername(String displayName);
+            def @User_PasswordChanged changePassword(@Password password);
+
+            def @User after(@StorageEvent ^event);
+
+            Repository UsersRepository {
+                @User get(@UserId id);
+                @User get(@Username username);
+            }
+        }
+
+        Service User {
+            @User_Registered register(@Username username, @Password password);
+
+            @User fromHistory(List<@UserEvent> ^event);
+            @User after(@User_Registered ^event);
+        }
+
+        abstract ValueObject UserId
+        ValueObject UserVersion {
+            long value key
+
+            def @UserVersion next();
+        }
+        ValueObject Username {
+            String displayName
+            int quantifier
+        }
+        ValueObject UserEmail
+
+        abstract DomainEvent UserEvent
+
+        DomainEvent User_Registered {
+            - UserId id
+            - UserVersion version
+
+            - Username username
+        }
+
+        DomainEvent User_Activated {
+            - UserId id
+            - UserVersion version
+        }
+
+        DomainEvent User_Deactivated {
+            - UserId id
+            - UserVersion version
+        }
+
+        DomainEvent User_PasswordChanged {
+            - UserId id
+            - UserVersion version
+        }
+
+         DomainEvent User_UsernameChanged {
+            - UserId id
+            - UserVersion version
+
+            - Username newUsername
+        }
+
+        DomainEvent User_ResourceRequested {
+            - UserId id
+            - UserVersion version
+
+            - ResourceRequestId resourceRequestId
+            - ResourceType resourceType
+        }
+
+        DomainEvent User_ResourceAcquired {
+            - UserId id
+            - UserVersion version
+
+            - ^Resource resource
+        }
+
+        DomainEvent User_ResourceDeleted {
+            - UserId id
+            - UserVersion version
+
+            - ^Resource resource
+        }
+
+        ValueObject Password {
+            String value
+        }
+
+        abstract ValueObject ^Resource {
+            - ResourceRequestId requestId
+            - ResourceType ^type
+            Object value
+        }
+
+        abstract ValueObject ResourceRequestId
+
+        Entity ResourceRequest {
+            - ResourceRequestId requestId
+            - ResourceType ^type
+        }
+
+        enum ResourceType {
+            Storage
+        }
+    }
+}

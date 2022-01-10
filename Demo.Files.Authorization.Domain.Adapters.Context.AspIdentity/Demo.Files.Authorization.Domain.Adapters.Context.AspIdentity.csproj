@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Common.EntityFramework\Common.EntityFramework.csproj" />
+      <ProjectReference Include="..\Common.Persistence.EntityFramework\Common.Persistence.EntityFramework.csproj" />
+      <ProjectReference Include="..\Demo.Files.Authorization.Domain.Abstractions\Demo.Files.Authorization.Domain.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.1" />
+    </ItemGroup>
+
+</Project>

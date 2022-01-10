@@ -1,0 +1,13 @@
+﻿{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "Urls": "http://127.0.0.1:5007",
+  "AuthenticationConsumerOptions": {
+    "IssuerSigningKey": "Development:c287f64d-1c38-4af1-b72a-794cf097d9df"
+  }
+}

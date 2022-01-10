@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Common.Communication.DependencyInjection\Common.Communication.DependencyInjection.csproj" />
+        <ProjectReference Include="..\Common.Communication.RabbitMq.DependencyInjection\Common.Communication.RabbitMq.DependencyInjection.csproj" />
+        <ProjectReference Include="..\Common.Core\Common.Core.csproj" />
+        <ProjectReference Include="..\Demo.Files.Common.Configuration\Demo.Files.Common.Configuration.csproj" />
+        <ProjectReference Include="..\Demo.Files.Common.Contracts\Demo.Files.Common.Contracts.csproj" />
+        <ProjectReference Include="..\Demo.Files.FilesManagement.Presentation.Common\Demo.Files.FilesManagement.Presentation.Common.csproj" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <Content Include="app-settings.Development.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+      <Content Include="app-settings.json">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
+    </ItemGroup>
+
+</Project>
